@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './schemas/user.schema';
+import { User, UserSchema } from './users/schemas/user.schema';
 import { Password } from './services/password';
 
 @Module({
@@ -20,6 +20,7 @@ import { Password } from './services/password';
 
             next();
           });
+
           return schema;
         },
       },
