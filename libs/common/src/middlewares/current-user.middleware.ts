@@ -18,19 +18,9 @@ export class CurrentUserMiddleware implements NestMiddleware {
   constructor() {}
 
   async use(req: Request, _res: Response, next: NextFunction) {
-    const sessionJWT = req.session?.jwt;
+    const cookie = req.cookies['current-user'] || null;
 
-    try {
-      if (!sessionJWT) throw new Error();
-      const payload = jwt.verify(
-        sessionJWT,
-        process.env.JWT_KEY!,
-      ) as UserPayload;
-
-      req.currentUser = payload;
-    } catch (error) {
-      req.currentUser = null;
-    }
+    req.currentUser = cookie ? JSON.parse(cookie) : null;
 
     next();
   }
