@@ -1,22 +1,10 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Req,
-  Session,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
-import { UsersService } from './users.service';
-import { SignupUserDTO } from './dto/create-user.dto';
-import { Request, Response } from 'express';
-import { UserPayload } from '@app/common/middlewares/current-user.middleware';
 import { CurrentUser } from '@app/common/decorators/current-user.decorator';
 import { Auth } from '@app/common/guards/auth.guard';
+import { UserPayload } from '@app/common/middlewares/current-user.middleware';
+import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
+import { Response } from 'express';
+import { SignupUserDTO } from './dto/create-user.dto';
+import { UsersService } from './users.service';
 
 @Controller('api/users')
 export class UsersController {

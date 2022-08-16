@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-monorepo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-monorepo
+  template:
+    metadata:
+      labels:
+        app: client-monorepo
+    spec:
+      containers:
+        - name: client-monorepo
+          image: lschulzes/client-monorepo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-monorepo-srv
+spec:
+  selector:
+    app: client-monorepo
+  ports:
+    - name: client-monorepo
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

@@ -1,0 +1,40 @@
+{
+  "plugins": ["@typescript-eslint", "import"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:import/typescript",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "import/first": "error",
+    "import/extensions": "off",
+    "react/display-name": ["warn", { "ignoreTranspilerName": false }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        "default": "generic"
+      }
+    ]
+  },
+
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

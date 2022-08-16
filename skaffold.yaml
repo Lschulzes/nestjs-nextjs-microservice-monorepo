@@ -28,3 +28,13 @@ build:
             dest: .
           - src: 'apps/**/**/*.ts'
             dest: .
+    - image: lschulzes/client-monorepo
+      context: .
+      docker:
+        dockerfile: Dockerfile.client
+      sync:
+        manual:
+          - src: 'apps/**/**/**/*.tsx'
+            dest: .
+          - src: 'apps/**/**/*.tsx'
+            dest: .

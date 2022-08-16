@@ -9,9 +9,10 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "build:auth": "nest build auth",
-    "build:blog": "nest build blog",
     "start:auth": "nest start auth",
+    "build:blog": "nest build blog",
     "start:blog": "nest start blog",
+    "start:client": "cd apps/client && next build && next start",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -39,7 +40,13 @@
     "mongoose": "^6.5.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.34.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -65,7 +72,14 @@
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "4.0.0",
-    "typescript": "^4.3.5"
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6",
+    "eslint-config-next": "12.2.5",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier-plugin-organize-imports": "^3.0.1",
+    "typescript": "4.7.4"
   },
   "jest": {
     "moduleFileExtensions": [
