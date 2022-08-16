@@ -12,6 +12,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
 import { Response } from 'express';
 import { Password } from '../services/password';
+import { UserPayload } from '@app/common/middlewares/current-user.middleware';
 
 @Injectable()
 export class UsersService {
@@ -51,6 +52,21 @@ export class UsersService {
     response.cookie('current-user', JSON.stringify(user)).send(user);
 
     return user;
+  }
+
+  async makeMeAdmin(
+    user: UserPayload,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const userToupdate = await this.userModel.findOne({ email: user.email });
+    userToupdate.role = 'admin';
+    const updatedUser = await userToupdate.save();
+
+    response
+      .cookie('current-user', JSON.stringify(updatedUser))
+      .send(updatedUser);
+
+    return updatedUser;
   }
 
   async signout(signinUserDTO: SigninUserDTO) {
