@@ -1,19 +1,12 @@
 import { NestFactory } from '@nestjs/core';
+import cookieParser from 'cookie-parser';
 import { BlogModule } from './blog.module';
-import { Logger } from '@nestjs/common';
-import { Transport } from '@nestjs/microservices';
-
-const logger = new Logger('Blog');
 
 async function bootstrap() {
-  const app = await NestFactory.createMicroservice(BlogModule, {
-    transport: Transport.TCP,
-    options: {
-      port: 3000,
-    },
-  });
+  const app = await NestFactory.create(BlogModule);
 
-  await app.listen();
-  logger.log('Microservice is listening');
+  app.use(cookieParser(process.env.JWT_KEY!));
+
+  await app.listen(3000);
 }
 bootstrap();
