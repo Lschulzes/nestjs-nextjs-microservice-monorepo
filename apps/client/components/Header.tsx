@@ -22,7 +22,7 @@ const Header = ({ user }: Props) => {
   return (
     <nav className="navbar navbar-dark bg-dark p-2">
       <Link href="/">
-        <a className="navbar-brand">GitTix</a>
+        <a className="navbar-brand">MetaMilla</a>
       </Link>
 
       <div className="d-flex justify-content-end">

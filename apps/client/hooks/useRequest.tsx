@@ -23,14 +23,12 @@ export function useRequest() {
         url,
         data: body,
       });
-      console.log({ data });
       setErrors(null);
 
       return { data, error: false };
     } catch (error) {
-      console.log(error);
       if (axios.isAxiosError(error)) {
-        const errors = (error.response?.data as { errors: ErrosResponse }).errors;
+        const errors = error.response?.data as ErrosResponse;
         setErrors(errors);
       }
 

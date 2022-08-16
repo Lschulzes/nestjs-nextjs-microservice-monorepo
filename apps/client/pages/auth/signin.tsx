@@ -26,7 +26,7 @@ const SigninPage = () => {
     if (error) return;
     push('/');
   };
-  console.log({ errors });
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="container py-4">
       <h1>Signin</h1>
