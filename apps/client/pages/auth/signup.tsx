@@ -46,13 +46,13 @@ const SignupPage = () => {
         />
       </div>
 
-      {errors && (
+      {errors?.message.length > 0 && (
         <div className="alert alert-danger">
           <h3>Oops...</h3>
 
           <ul className="my-0">
-            {errors.map((el) => (
-              <li key={el.field}>{el.message}</li>
+            {errors.message.map((msg) => (
+              <li key={msg}>{msg}</li>
             ))}
           </ul>
         </div>

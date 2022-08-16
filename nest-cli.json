@@ -44,6 +44,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/hello/tsconfig.lib.json"
       }
+    },
+    "date-utils": {
+      "type": "library",
+      "root": "libs/date-utils",
+      "entryFile": "index",
+      "sourceRoot": "libs/date-utils/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/date-utils/tsconfig.lib.json"
+      }
     }
   }
 }

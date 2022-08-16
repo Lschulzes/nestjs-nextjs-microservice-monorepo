@@ -29,6 +29,12 @@
       ],
       "@app/hello/*": [
         "libs/hello/src/*"
+      ],
+      "@app/date-utils": [
+        "libs/date-utils/src"
+      ],
+      "@app/date-utils/*": [
+        "libs/date-utils/src/*"
       ]
     }
   }

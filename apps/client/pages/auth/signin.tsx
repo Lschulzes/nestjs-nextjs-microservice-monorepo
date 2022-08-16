@@ -26,7 +26,7 @@ const SigninPage = () => {
     if (error) return;
     push('/');
   };
-
+  console.log({ errors });
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="container py-4">
       <h1>Signin</h1>
@@ -46,18 +46,17 @@ const SigninPage = () => {
         />
       </div>
 
-      {errors && (
+      {errors && errors.message && errors.message.length > 0 && (
         <div className="alert alert-danger">
           <h3>Oops...</h3>
 
           <ul className="my-0">
-            {errors.map((el) => (
-              <li key={el.message}>{el.message}</li>
+            {errors?.message.map((msg) => (
+              <li key={msg}>{msg}</li>
             ))}
           </ul>
         </div>
       )}
-
       <button type="submit" className="btn btn-primary">
         Sign In
       </button>

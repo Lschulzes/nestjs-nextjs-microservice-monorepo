@@ -1,7 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { useState } from 'react';
 
-type ErrosResponse = Array<{ message: string; field?: string }>;
+type ErrosResponse = {
+  statusCode: number;
+  message: Array<string>;
+  error: string;
+};
 
 type Props = {
   url: string;
@@ -19,11 +23,12 @@ export function useRequest() {
         url,
         data: body,
       });
-
+      console.log({ data });
       setErrors(null);
 
       return { data, error: false };
     } catch (error) {
+      console.log(error);
       if (axios.isAxiosError(error)) {
         const errors = (error.response?.data as { errors: ErrosResponse }).errors;
         setErrors(errors);

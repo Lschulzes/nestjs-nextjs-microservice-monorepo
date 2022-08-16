@@ -3,6 +3,7 @@ import { Auth } from '@app/common/guards/auth.guard';
 import { UserPayload } from '@app/common/middlewares/current-user.middleware';
 import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
+import { getCurrentDate } from 'libs/date-utils/src';
 import { SignupUserDTO } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 
@@ -12,7 +13,8 @@ export class UsersController {
 
   @Get('/')
   hello() {
-    return 'Hello World!';
+    const today = getCurrentDate();
+    return today.toISOString();
   }
 
   @Get('current-user')

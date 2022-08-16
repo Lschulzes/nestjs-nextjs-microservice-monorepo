@@ -9,10 +9,13 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "build:auth": "nest build auth",
-    "start:auth": "nest start auth",
     "build:blog": "nest build blog",
+    "start:auth": "nest start auth",
     "start:blog": "nest start blog",
     "start:client": "cd apps/client && next build && next start",
+    "dev:auth": "NODE_ENV=development nest start auth --watch",
+    "dev:blog": "NODE_ENV=development nest start blog --watch",
+    "dev:client": "cd apps/client && next dev",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -103,7 +106,8 @@
     ],
     "moduleNameMapper": {
       "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
-      "^@app/hello(|/.*)$": "<rootDir>/libs/hello/src/$1"
+      "^@app/hello(|/.*)$": "<rootDir>/libs/hello/src/$1",
+      "^@app/date-utils(|/.*)$": "<rootDir>/libs/date-utils/src/$1"
     }
   }
 }

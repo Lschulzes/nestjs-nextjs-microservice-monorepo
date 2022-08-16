@@ -11,30 +11,24 @@ build:
     - image: lschulzes/auth-monorepo
       context: .
       docker:
-        dockerfile: Dockerfile.auth
+        dockerfile: apps/auth/Dockerfile.dev.auth
       sync:
         manual:
-          - src: 'apps/**/**/**/*.ts'
-            dest: .
-          - src: 'apps/**/**/*.ts'
+          - src: 'apps/**/*.ts'
             dest: .
     - image: lschulzes/blog-monorepo
       context: .
       docker:
-        dockerfile: Dockerfile.blog
+        dockerfile: apps/blog/Dockerfile.dev.blog
       sync:
         manual:
-          - src: 'apps/**/**/**/*.ts'
-            dest: .
-          - src: 'apps/**/**/*.ts'
+          - src: 'apps/**/*.ts'
             dest: .
     - image: lschulzes/client-monorepo
       context: .
       docker:
-        dockerfile: Dockerfile.client
+        dockerfile: apps/client/Dockerfile.dev.client
       sync:
         manual:
-          - src: 'apps/**/**/**/*.tsx'
-            dest: .
-          - src: 'apps/**/**/*.tsx'
+          - src: 'apps/**/*.tsx'
             dest: .
