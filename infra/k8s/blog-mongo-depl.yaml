@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-mongo-monorepo-depl
+spec:
+  selector:
+    matchLabels:
+      app: blog-mongo-monorepo
+  template:
+    metadata:
+      labels:
+        app: blog-mongo-monorepo
+    spec:
+      containers:
+        - name: blog-mongo-monorepo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-mongo-monorepo-srv
+spec:
+  selector:
+    app: blog-mongo-monorepo
+  ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
+      name: db

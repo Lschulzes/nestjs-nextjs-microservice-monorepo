@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-monorepo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog-monorepo
+  template:
+    metadata:
+      labels:
+        app: blog-monorepo
+    spec:
+      containers:
+        - name: blog-monorepo
+          image: lschulzes/blog-monorepo
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-monorepo-srv
+spec:
+  selector:
+    app: blog-monorepo
+  ports:
+    - name: blog-monorepo
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

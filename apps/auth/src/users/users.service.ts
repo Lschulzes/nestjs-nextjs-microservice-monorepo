@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import { UserPayload } from '@app/common/middlewares/current-user.middleware';
 import {
   BadRequestException,
   Injectable,
@@ -6,13 +6,11 @@ import {
   Res,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { SigninUserDTO, SignupUserDTO } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User, UserDocument } from './schemas/user.schema';
 import { Response } from 'express';
+import { Model } from 'mongoose';
 import { Password } from '../services/password';
-import { UserPayload } from '@app/common/middlewares/current-user.middleware';
+import { SigninUserDTO, SignupUserDTO } from './dto/create-user.dto';
+import { User, UserDocument } from './schemas/user.schema';
 
 @Injectable()
 export class UsersService {

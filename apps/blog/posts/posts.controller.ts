@@ -5,11 +5,11 @@ import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostsService } from './posts.service';
 
-@Controller('posts')
+@Controller('api/posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  @Post()
+  @Post('/')
   @UseGuards(Auth)
   create(
     @Body() createPostDto: CreatePostDto,
@@ -18,7 +18,7 @@ export class PostsController {
     return this.postsService.create(createPostDto, user.id);
   }
 
-  @Get()
+  @Get('/')
   findAll() {
     return this.postsService.findAll();
   }

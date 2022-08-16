@@ -17,6 +17,13 @@ spec:
                 name: auth-monorepo-srv
                 port:
                   number: 3000
+          - path: /api/posts/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: blog-monorepo-srv
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix
             backend:
