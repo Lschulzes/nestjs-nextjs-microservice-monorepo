@@ -15,11 +15,16 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { Request } from 'express';
 import { UserPayload } from '@app/common/middlewares/current-user.middleware';
 
-@Controller('users')
+@Controller('api/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post('current-user')
+  @Get('/')
+  hello() {
+    return 'Hello World!';
+  }
+
+  @Get('current-user')
   currentUser(@Req() req: Request): UserPayload {
     return req.currentUser;
   }

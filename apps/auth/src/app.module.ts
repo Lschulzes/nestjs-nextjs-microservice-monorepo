@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './users/schemas/user.schema';
 import { Password } from './services/password';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -17,15 +18,14 @@ import { Password } from './services/password';
               const hashedPassword = await Password.toHash(this.password);
               this.set('password', hashedPassword);
             }
-
             next();
           });
-
           return schema;
         },
       },
     ]),
-    MongooseModule.forRoot('mongodb://auth-mongo-srv:27017/auth'),
+    MongooseModule.forRoot('mongodb://auth-mongo-monorepo-srv:27017/auth'),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

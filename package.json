@@ -8,6 +8,10 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "build:auth": "nest build auth",
+    "build:blog": "nest build blog",
+    "start:auth": "nest start auth",
+    "start:blog": "nest start blog",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -24,6 +28,7 @@
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/mapped-types": "^1.1.0",
+    "@nestjs/microservices": "^9.0.9",
     "@nestjs/mongoose": "^9.2.0",
     "@nestjs/platform-express": "^8.0.0",
     "class-transformer": "^0.5.1",
